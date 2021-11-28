@@ -1,0 +1,14 @@
+---
+- name: "Download Kibana's rpm"
+  get_url:
+    url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-x86_64.rpm"
+    dest: "files/kibana-{{ kibana_version }}-x86_64.rpm"
+  register: download_kibana
+  delegate_to: localhost
+  until: download_kibana is succeeded
+  when: kibana_install_type == 'remote'
+- name: Copy Kibana to managed node
+  copy:
+    src: "files/kibana-{{ kibana_version }}-x86_64.rpm"
+    mode: 0755
+    dest: "/tmp/kibana-{{ kibana_version }}-x86_64.rpm"
