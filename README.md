@@ -20,7 +20,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: kibana-  role }
+         - { role: kibana-role }
 
 License
 -------

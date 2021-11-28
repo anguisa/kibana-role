@@ -2,7 +2,7 @@ galaxy_info:
   author: Olga Ivanova
   description: Install Kibana
   company: netology
-  role_name: kibana_role
+  role_name: kibana-role
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
