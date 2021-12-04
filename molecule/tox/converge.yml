@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include kibana-role"
+      include_role:
+        name: "kibana-role"
+      vars:
+        - ansible_become: false
+        - kibana_elastic_host: '{{ inventory_hostname }}'
