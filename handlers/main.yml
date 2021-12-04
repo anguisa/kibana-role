@@ -4,4 +4,4 @@
   service:
     name: kibana
     state: restarted
-  when: ansible_virtualization_type != 'docker'
+  when: ansible_virtualization_type != 'docker' and ansible_virtualization_type != 'podman'

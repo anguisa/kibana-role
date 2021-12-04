@@ -14,6 +14,7 @@ Role Variables
 | Variable name | Default | Description |
 |-----------------------|----------|-------------------------|
 | kibana_version | "7.14.0" | Параметр, который определяет, какой версии Kibana будет установлена |
+| kibana_elastic_host | "el_instance" | Параметр, который определяет имя хоста с Elasticsearch |
 
 Example Playbook
 ----------------

@@ -1,0 +1,9 @@
+---
+- name: Install ip route
+  become: true
+  apt:
+    name: iproute2
+- name: Install Java
+  become: true
+  apt:
+    name: openjdk-11-jdk

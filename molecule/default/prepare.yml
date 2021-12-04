@@ -1,0 +1,31 @@
+---
+- name: Install Elasticsearch
+  hosts: all
+  pre_tasks:
+    - include_tasks: "prepare_{{ ansible_facts.pkg_mgr }}.yml"
+  roles:
+    - role: mnt-homeworks-ansible
+      vars:
+        - ansible_become: false
+  post_tasks:
+    - name: Create user
+      user:
+        name: test
+        state: present
+    - name: Adding user to sudoers
+      vars:
+        - user: test
+      template:
+        src: sudo_user.j2
+        dest: /etc/sudoers.d/sudo_user
+        mode: 0440
+        owner: root
+        group: root
+    - name: Change permissions && Start elastic
+      shell: |
+        chown -R test /var/log/elasticsearch
+        chown -R test /var/lib/elasticsearch
+        usermod -g elasticsearch test
+        su test <<EOF
+        /usr/share/elasticsearch/bin/elasticsearch -d
+        EOF

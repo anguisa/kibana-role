@@ -1,0 +1,9 @@
+---
+- name: Install ip route
+  become: true
+  yum:
+    name: iproute
+- name: Install Java
+  become: true
+  yum:
+    name: java-11-openjdk-devel

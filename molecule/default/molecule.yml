@@ -1,0 +1,22 @@
+---
+#dependency:
+#  name: galaxy
+#  options:
+#    role-file: requirements.yml
+driver:
+  name: podman
+platforms:
+  - name: centos7
+    image: docker.io/pycontribs/centos:7
+    pre_build_image: true
+    hostname: ""
+  - name: ubuntu
+    image: docker.io/pycontribs/ubuntu:latest
+    pre_build_image: true
+    hostname: ""
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: /opt/ansible-testing
+verifier:
+  name: ansible

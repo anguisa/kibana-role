@@ -1,0 +1,12 @@
+---
+- name: Side effects
+  hosts: all
+  tasks:
+    - name: Change permissions && Start kibana
+      shell: |
+        chown -R test /var/log/kibana
+        chown -R test /var/lib/kibana
+        chown -R test /etc/kibana
+        su test <<EOF
+        nohup /usr/share/kibana/bin/kibana --config /etc/kibana/kibana.yml </dev/null >/dev/null 2>&1 &
+        EOF

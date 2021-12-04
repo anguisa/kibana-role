@@ -1,0 +1,5 @@
+---
+- src: git+file:///opt/ansible-testing/mnt-homeworks-ansible
+  scm: git
+  version: "2.0.3"
+  name: elastic
